@@ -46,8 +46,8 @@
   .masthead-title{font-family:var(--serif);font-weight:500;font-size:clamp(1.05rem,2.2vw,1.4rem);letter-spacing:.22em;text-transform:uppercase;color:var(--lilac-deep);}
   .masthead-title em{font-style:italic;color:var(--sage);}
   .masthead-sub{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--lilac);opacity:.85;margin-top:7px;}
-  .wrap{max-width:640px;margin:0 auto;padding:46px 22px 30px;}
-  @media (max-width:480px){.wrap{padding:32px 16px 22px;} body{font-size:16px;}}
+  .wrap{max-width:640px;margin:0 auto;padding:42px 22px 30px;}
+  @media (max-width:480px){.wrap{padding:28px 16px 22px;} body{font-size:16px;}}
 
   .eyebrow{display:block;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--sage);font-weight:700;margin-bottom:16px;text-align:center;}
   h1{
@@ -55,7 +55,7 @@
     font-size:clamp(30px,6.5vw,42px);line-height:1.22;text-align:center;
     color:var(--ink);margin-bottom:18px;letter-spacing:-.3px;
   }
-  h1 em{
+  h1 em, .q em{
     font-style:italic;color:var(--lilac);
     -webkit-box-decoration-break:clone;box-decoration-break:clone;
     padding:.03em .14em;background:rgba(216,232,212,.65);
@@ -67,7 +67,12 @@
   .screen.active{display:block;}
   @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 
-  /* Zonen-Karten (Auswahl) */
+  /* Fortschritts-Punkte */
+  .dots{display:flex;justify-content:center;gap:8px;margin-bottom:22px;}
+  .dots i{width:8px;height:8px;border-radius:50%;background:#DDD4E8;transition:background .3s;}
+  .dots i.on{background:var(--lilac);}
+
+  /* Zonen-Karten */
   .zone{
     display:flex;align-items:center;gap:18px;width:100%;text-align:left;
     background:var(--white);border:none;cursor:pointer;
@@ -82,46 +87,84 @@
   .zone-quote{font-family:var(--serif);font-style:italic;font-size:14.5px;color:var(--edge);margin-top:1px;}
   .zone-words{font-size:13px;color:var(--ink-soft);margin-top:5px;line-height:1.5;}
 
+  /* Fragen-Screens */
+  .q{
+    font-family:var(--serif);font-weight:500;font-size:clamp(22px,5vw,28px);
+    line-height:1.35;text-align:center;color:var(--ink);margin-bottom:8px;
+  }
+  .q-sub{text-align:center;font-size:14px;color:var(--ink-soft);margin-bottom:24px;}
+  .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:8px;}
+  .chip{
+    background:var(--white);border:1.5px solid #DDD4E8;color:var(--ink-body);
+    border-radius:999px;padding:9px 18px;font-family:var(--sans);font-size:14.5px;
+    cursor:pointer;transition:all .15s ease;
+  }
+  .chip:hover{border-color:var(--lilac);}
+  .chip.sel{background:var(--lilac);border-color:var(--lilac);color:var(--white);font-weight:700;}
+  .group-label{font-size:10.5px;letter-spacing:1.8px;text-transform:uppercase;font-weight:700;color:var(--sage);text-align:center;margin:22px 0 12px;}
+
+  /* Farb-Swatches */
+  .swatches{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;}
+  .sw{
+    width:44px;height:44px;border-radius:50%;cursor:pointer;border:3px solid transparent;
+    box-shadow:0 2px 10px rgba(59,42,90,.15);transition:transform .15s ease, border-color .15s ease;
+  }
+  .sw:hover{transform:scale(1.08);}
+  .sw.sel{border-color:var(--ink);transform:scale(1.12);}
+
+  .nav{display:flex;justify-content:center;gap:12px;margin-top:30px;}
+  .btn{
+    display:inline-block;background:var(--lilac);color:var(--white);border:none;
+    border-radius:999px;padding:14px 38px;font-family:var(--sans);font-size:15.5px;
+    font-weight:700;letter-spacing:.3px;cursor:pointer;
+    box-shadow:0 6px 18px rgba(123,94,167,.25);transition:background .2s, transform .15s;
+  }
+  .btn:hover{background:var(--lilac-deep);transform:translateY(-2px);}
+  .btn-ghost{
+    display:inline-block;background:transparent;color:var(--lilac);
+    border:1.5px solid var(--lilac);border-radius:999px;
+    padding:11px 26px;font-family:var(--sans);font-size:14px;font-weight:700;
+    cursor:pointer;transition:background .2s ease;
+  }
+  .btn-ghost:hover{background:var(--lilac-soft);}
+  .skip{display:block;margin:14px auto 0;background:none;border:none;
+    font-family:var(--sans);font-size:13px;color:var(--ink-soft);cursor:pointer;text-decoration:underline;}
+
+  /* Fühlen-Screen */
+  .feelbox{
+    background:var(--white);border-radius:24px;padding:34px 30px;margin:0 auto 6px;
+    max-width:520px;box-shadow:0 2px 16px rgba(123,94,167,.08);text-align:center;
+  }
+  .feelbox p{font-size:15.5px;margin-bottom:14px;}
+  .feelbox p:last-child{margin-bottom:0;}
+
   /* Ergebnis */
   .badge-row{text-align:center;margin-bottom:14px;}
   .mode-badge{
-    display:inline-block;background:var(--accent);color:var(--white);
+    display:inline-block;background:var(--accent,#7B5EA7);color:var(--white);
     font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;
     border-radius:999px;padding:8px 20px;
-  }
-  .result-ic{text-align:center;margin:6px 0 10px;}
-  h2{
-    font-family:var(--serif);font-weight:500;font-size:clamp(22px,5vw,28px);
-    line-height:1.3;text-align:center;color:var(--ink);margin-bottom:14px;
   }
   .card{
     background:var(--white);border-radius:24px;padding:32px 30px;margin-bottom:20px;
     box-shadow:0 2px 16px rgba(123,94,167,.08);
   }
   @media (max-width:480px){.card{padding:26px 20px;}}
-  .validate{font-size:15.5px;text-align:center;max-width:500px;margin:0 auto 22px;}
-  .helpbox{
-    border-radius:20px;padding:24px 26px;margin:0 0 6px;
-    background:var(--tint);
+  .mirror{
+    border-radius:18px;padding:20px 24px;margin-bottom:20px;
+    background:linear-gradient(160deg,#F4F0FA 0%, #EDE6F6 100%);
+    font-size:15px;line-height:1.7;
   }
-  .help-label{font-size:10.5px;letter-spacing:1.8px;text-transform:uppercase;font-weight:700;color:var(--accent-deep);margin-bottom:12px;}
+  .mirror .m-label{font-size:10.5px;letter-spacing:1.8px;text-transform:uppercase;font-weight:700;color:var(--lilac-deep);margin-bottom:8px;}
+  .validate{font-size:15.5px;text-align:center;max-width:500px;margin:0 auto 22px;}
+  .helpbox{border-radius:20px;padding:24px 26px;background:var(--tint,#F4F0FA);}
+  .help-label{font-size:10.5px;letter-spacing:1.8px;text-transform:uppercase;font-weight:700;color:var(--accent-deep,#5C3D8F);margin-bottom:12px;}
   .steps{list-style:none;}
   .steps li{position:relative;padding-left:26px;margin-bottom:13px;font-size:15px;line-height:1.65;}
   .steps li:last-child{margin-bottom:0;}
-  .steps li::before{content:'◈';position:absolute;left:0;top:0;color:var(--accent);}
-  .anchor{
-    font-family:var(--serif);font-style:italic;font-size:19px;color:var(--lilac-deep);
-    text-align:center;margin:22px 0 4px;
-  }
+  .steps li::before{content:'◈';position:absolute;left:0;top:0;color:var(--accent,#7B5EA7);}
+  .anchor{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--lilac-deep);text-align:center;margin:22px 0 4px;}
   .tip{font-size:13.5px;color:var(--ink-soft);text-align:center;max-width:460px;margin:18px auto 0;line-height:1.6;}
-
-  .btn-ghost{
-    display:inline-block;background:transparent;color:var(--lilac);
-    border:1.5px solid var(--lilac);border-radius:999px;
-    padding:11px 28px;font-family:var(--sans);font-size:14.5px;font-weight:700;
-    letter-spacing:.3px;cursor:pointer;transition:background .2s ease;
-  }
-  .btn-ghost:hover{background:var(--lilac-soft);}
   .center{text-align:center;}
   .restart{margin-top:24px;}
 
@@ -137,13 +180,13 @@
 
 <div class="wrap">
 
-  <!-- START -->
+  <!-- 0 · START: ZONE -->
   <section class="screen active" id="s-start">
-    <span class="eyebrow">Dein täglicher Regulations-Check · 20 Sekunden</span>
+    <span class="eyebrow">Dein täglicher Regulations-Check · 2 Minuten</span>
     <h1>Wo bin ich <em>gerade</em>?</h1>
     <p class="lead">Halte kurz inne. Spür in deinen Körper – und wähle die Zone, die sich gerade am ehesten stimmig anfühlt. Ohne zu bewerten. Es gibt kein richtig oder falsch.</p>
 
-    <button class="zone" style="--edge:#7B5EA7;" onclick="show('s-hyper')">
+    <button class="zone" style="--edge:#7B5EA7;" onclick="pickZone('hyper')">
       <svg class="ic" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M4 30 C9 8, 14 8, 19 30 S28 52, 33 30 S42 8, 48 22" stroke="#7B5EA7" stroke-width="2.6" stroke-linecap="round"/></svg>
       <span>
         <span class="zone-name">Zu viel Energie</span>
@@ -152,7 +195,7 @@
       </span>
     </button>
 
-    <button class="zone" style="--edge:#7A9E73;" onclick="show('s-ventral')">
+    <button class="zone" style="--edge:#7A9E73;" onclick="pickZone('ventral')">
       <svg class="ic" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M4 26 C12 17, 18 17, 26 26 S40 35, 48 26" stroke="#7A9E73" stroke-width="2.6" stroke-linecap="round"/></svg>
       <span>
         <span class="zone-name">Bei mir</span>
@@ -161,7 +204,7 @@
       </span>
     </button>
 
-    <button class="zone" style="--edge:#8B7FA6;" onclick="show('s-hypo')">
+    <button class="zone" style="--edge:#8B7FA6;" onclick="pickZone('hypo')">
       <svg class="ic" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M4 24 C12 26, 18 30, 26 29 S40 33, 48 34" stroke="#8B7FA6" stroke-width="2.6" stroke-linecap="round"/></svg>
       <span>
         <span class="zone-name">Zu wenig Energie</span>
@@ -173,61 +216,66 @@
     <p class="tip">Mach diesen Check einmal am Tag – so lernt dein Nervensystem, sich selbst früher wahrzunehmen.</p>
   </section>
 
-  <!-- ZU VIEL -->
-  <section class="screen" id="s-hyper" style="--accent:#7B5EA7;--accent-deep:#5C3D8F;--tint:#F4F0FA;">
-    <div class="badge-row"><span class="mode-badge">Zu viel Energie · Kampf oder Flucht</span></div>
-    <div class="result-ic"><svg width="64" height="64" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M4 30 C9 8, 14 8, 19 30 S28 52, 33 30 S42 8, 48 22" stroke="#7B5EA7" stroke-width="2.6" stroke-linecap="round"/></svg></div>
-    <div class="card">
-      <p class="validate">Dein System mobilisiert gerade viel Energie, um dich zu schützen. Das ist keine Schwäche – es hält dich wachsam. Und es darf jetzt langsam wieder Sicherheit spüren.</p>
-      <div class="helpbox">
-        <div class="help-label">Was jetzt hilft · Verlangsamen</div>
-        <ul class="steps">
-          <li><strong>Atme lang aus:</strong> 4 Sekunden ein, 8 Sekunden aus – vier Runden. Der lange Ausatem beruhigt dein System.</li>
-          <li><strong>Spür beide Füße am Boden</strong> – Ferse, Ballen, Zehen. Drück sie sanft in den Boden.</li>
-          <li><strong>Reduziere Reize:</strong> eine Sache weglegen, einen Ton ausschalten, ein Moment Stille.</li>
-        </ul>
-      </div>
-      <p class="anchor">„Ich darf langsamer werden."</p>
-    </div>
-    <p class="center restart"><button class="btn-ghost" onclick="show('s-start')">Neu einchecken</button></p>
+  <!-- 1 · KÖRPER -->
+  <section class="screen" id="s-body">
+    <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    <p class="q">Wie fühlt sich das gerade in deinem <em>Körper</em> an?</p>
+    <p class="q-sub">Wo spürst du es am deutlichsten? Du kannst mehrere Orte wählen.</p>
+    <div class="chips" id="c-body"></div>
+    <div class="nav"><button class="btn" onclick="go('s-quality')">Weiter</button></div>
+    <button class="skip" onclick="go('s-quality')">Ich spüre gerade wenig – einfach weiter</button>
   </section>
 
-  <!-- BEI MIR -->
-  <section class="screen" id="s-ventral" style="--accent:#7A9E73;--accent-deep:#5F8256;--tint:#EEF4EA;">
-    <div class="badge-row"><span class="mode-badge">Bei mir · Sicher &amp; verbunden</span></div>
-    <div class="result-ic"><svg width="64" height="64" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M4 26 C12 17, 18 17, 26 26 S40 35, 48 26" stroke="#7A9E73" stroke-width="2.6" stroke-linecap="round"/></svg></div>
-    <div class="card">
-      <p class="validate">Schön – du bist gerade in Verbindung mit dir. Genau von hier aus gelingt Regulation. Nimm dir einen Moment, das bewusst zu verankern.</p>
-      <div class="helpbox">
-        <div class="help-label">Bleib hier · Verankern</div>
-        <ul class="steps">
-          <li><strong>Spür nach:</strong> Woran merkst du gerade, dass du bei dir bist – im Atem, in den Schultern, im Bauch?</li>
-          <li><strong>Benenne es innerlich:</strong> „So fühlt sich reguliert an."</li>
-          <li><strong>Genieße bewusst drei Atemzüge.</strong> Je öfter du diesen Zustand wahrnimmst, desto leichter findet dein System zurück.</li>
-        </ul>
-      </div>
-      <p class="anchor">„Ich bin hier. Ich bin bei mir."</p>
-    </div>
-    <p class="center restart"><button class="btn-ghost" onclick="show('s-start')">Neu einchecken</button></p>
+  <!-- 2 · BESCHAFFENHEIT & FARBE -->
+  <section class="screen" id="s-quality">
+    <div class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
+    <p class="q">Wenn das, was du spürst, eine <em>Gestalt</em> hätte …</p>
+    <p class="q-sub">Wie wäre es beschaffen? Wähle, was passt – es darf auch überraschen.</p>
+    <div class="group-label">Beschaffenheit</div>
+    <div class="chips" id="c-texture"></div>
+    <div class="group-label">Und welche Farbe hätte es?</div>
+    <div class="swatches" id="c-color"></div>
+    <div class="nav"><button class="btn" onclick="go('s-thoughts')">Weiter</button></div>
+    <button class="skip" onclick="go('s-thoughts')">Schwer zu sagen – einfach weiter</button>
   </section>
 
-  <!-- ZU WENIG -->
-  <section class="screen" id="s-hypo" style="--accent:#8B7FA6;--accent-deep:#7C6F97;--tint:#F4F0FA;">
-    <div class="badge-row"><span class="mode-badge">Zu wenig Energie · Freeze oder Starre</span></div>
-    <div class="result-ic"><svg width="64" height="64" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M4 24 C12 26, 18 30, 26 29 S40 33, 48 34" stroke="#8B7FA6" stroke-width="2.6" stroke-linecap="round"/></svg></div>
-    <div class="card">
-      <p class="validate">Dein System hat heruntergefahren, um dich zu schützen. Auch das ist eine Leistung – kein Versagen. Es darf jetzt sanft wieder ein bisschen lebendig werden.</p>
-      <div class="helpbox">
-        <div class="help-label">Was jetzt hilft · Sanft aktivieren</div>
-        <ul class="steps">
-          <li><strong>Reib deine Handflächen aneinander,</strong> bis sie warm werden – und leg eine aufs Brustbein.</li>
-          <li><strong>Beweg dich sanft:</strong> aufstehen, räkeln, strecken – wie nach dem Aufwachen.</li>
-          <li><strong>Hol dir Licht oder frische Luft</strong> – einen Moment ans Fenster.</li>
-        </ul>
-      </div>
-      <p class="anchor">„Ich darf langsam wieder auftauchen."</p>
+  <!-- 3 · GEDANKEN -->
+  <section class="screen" id="s-thoughts">
+    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
+    <p class="q">Und welche <em>Gedanken</em> sind gerade da?</p>
+    <p class="q-sub">Wähle, was dir bekannt vorkommt.</p>
+    <div class="chips" id="c-thoughts"></div>
+    <div class="nav"><button class="btn" onclick="go('s-feel')">Weiter</button></div>
+    <button class="skip" onclick="go('s-feel')">Keiner davon – einfach weiter</button>
+  </section>
+
+  <!-- 4 · FÜHLEN -->
+  <section class="screen" id="s-feel">
+    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+    <p class="q">Bleib einen Moment <em>genau hier</em>.</p>
+    <div class="feelbox">
+      <p>Richte deine Aufmerksamkeit wie eine <strong>Taschenlampe</strong> auf das, was du gerade wahrgenommen hast – und leuchte sanft darauf.</p>
+      <p>Nicht bewerten. Nicht wegmachen. Nur fühlen – und <strong>durchatmen</strong>, auch wenn es kurz intensiver wird.</p>
+      <p class="muted">Nimm dir dafür zwei, drei ruhige Atemzüge Zeit.</p>
     </div>
-    <p class="center restart"><button class="btn-ghost" onclick="show('s-start')">Neu einchecken</button></p>
+    <div class="nav"><button class="btn" onclick="showResult()">Ich bin bereit – weiter</button></div>
+  </section>
+
+  <!-- 5 · ERGEBNIS -->
+  <section class="screen" id="s-result">
+    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+    <div class="badge-row"><span class="mode-badge" id="r-badge"></span></div>
+    <div class="card">
+      <div class="mirror" id="r-mirror"></div>
+      <p class="validate" id="r-validate"></p>
+      <div class="helpbox" id="r-helpbox">
+        <div class="help-label" id="r-helplabel"></div>
+        <ul class="steps" id="r-steps"></ul>
+      </div>
+      <p class="anchor" id="r-anchor"></p>
+    </div>
+    <p class="tip">Allein dieses Hinspüren war schon Regulation: Du hast dem, was da ist, Aufmerksamkeit geschenkt – ohne es zu bewerten.</p>
+    <p class="center restart"><button class="btn-ghost" onclick="restart()">Neu einchecken</button></p>
   </section>
 
 </div>
@@ -238,10 +286,150 @@
 </footer>
 
 <script>
-function show(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
+/* ---------- Daten ---------- */
+const BODY = ["Brust","Hals & Kiefer","Bauch","Schultern & Nacken","Kopf","Arme & Beine","überall & diffus","kaum spürbar"];
+const TEXTURE = ["warm","heiß","kühl","kalt","weich","hart","eng","weit","schwer","leicht","kribbelnd","dumpf","wie Watte","flirrend"];
+const COLORS = [
+  {n:"Rot",h:"#C05B5B"},{n:"Orange",h:"#D98E4A"},{n:"Gelb",h:"#E3C25C"},
+  {n:"Grün",h:"#7A9E73"},{n:"Blau",h:"#6B8FB3"},{n:"Violett",h:"#7B5EA7"},
+  {n:"Rosa",h:"#D8A0B6"},{n:"Braun",h:"#9A7B5F"},{n:"Grau",h:"#A9A4B0"},
+  {n:"Schwarz",h:"#3B3B3F"},{n:"Hell",h:"#F1ECE2"}
+];
+const THOUGHTS = {
+  hyper:["Ich muss funktionieren","Ich darf keinen Fehler machen","Alle wollen etwas von mir","Ich muss das kontrollieren","Es ist alles zu viel"],
+  ventral:["Ich kann damit umgehen","Es ist gerade gut, wie es ist","Ich habe Zeit","Ich bin sicher"],
+  hypo:["Es hat eh keinen Sinn","Ich schaffe das nicht mehr","Ich will nur noch Ruhe","Ich spüre gar nichts"]
+};
+const ZONES = {
+  hyper:{
+    badge:"Zu viel Energie · Kampf oder Flucht",
+    accent:"#7B5EA7", deep:"#5C3D8F", tint:"#F4F0FA",
+    validate:"Dein System mobilisiert gerade viel Energie, um dich zu schützen. Das ist keine Schwäche – es hält dich wachsam. Und es darf jetzt langsam wieder Sicherheit spüren.",
+    helplabel:"Was jetzt hilft · Verlangsamen",
+    steps:[
+      "<strong>Atme lang aus:</strong> 4 Sekunden ein, 8 Sekunden aus – vier Runden. Der lange Ausatem beruhigt dein System.",
+      "<strong>Spür beide Füße am Boden</strong> – Ferse, Ballen, Zehen. Drück sie sanft in den Boden.",
+      "<strong>Reduziere Reize:</strong> eine Sache weglegen, einen Ton ausschalten, ein Moment Stille."
+    ],
+    anchor:"„Ich darf langsamer werden.“"
+  },
+  ventral:{
+    badge:"Bei mir · Sicher & verbunden",
+    accent:"#7A9E73", deep:"#5F8256", tint:"#EEF4EA",
+    validate:"Schön – du bist gerade in Verbindung mit dir. Genau von hier aus gelingt Regulation. Nimm dir einen Moment, das bewusst zu verankern.",
+    helplabel:"Bleib hier · Verankern",
+    steps:[
+      "<strong>Spür nach:</strong> Woran merkst du gerade, dass du bei dir bist – im Atem, in den Schultern, im Bauch?",
+      "<strong>Benenne es innerlich:</strong> „So fühlt sich reguliert an.\"",
+      "<strong>Genieße bewusst drei Atemzüge.</strong> Je öfter du diesen Zustand wahrnimmst, desto leichter findet dein System zurück."
+    ],
+    anchor:"„Ich bin hier. Ich bin bei mir.“"
+  },
+  hypo:{
+    badge:"Zu wenig Energie · Freeze oder Starre",
+    accent:"#8B7FA6", deep:"#7C6F97", tint:"#F4F0FA",
+    validate:"Dein System hat heruntergefahren, um dich zu schützen. Auch das ist eine Leistung – kein Versagen. Es darf jetzt sanft wieder ein bisschen lebendig werden.",
+    helplabel:"Was jetzt hilft · Sanft aktivieren",
+    steps:[
+      "<strong>Reib deine Handflächen aneinander,</strong> bis sie warm werden – und leg eine aufs Brustbein.",
+      "<strong>Beweg dich sanft:</strong> aufstehen, räkeln, strecken – wie nach dem Aufwachen.",
+      "<strong>Hol dir Licht oder frische Luft</strong> – einen Moment ans Fenster."
+    ],
+    anchor:"„Ich darf langsam wieder auftauchen.“"
+  }
+};
+
+/* ---------- State (nur im Speicher, wird nie übertragen) ---------- */
+let state = {zone:null, body:[], texture:[], color:null, thought:null};
+
+/* ---------- Chips bauen ---------- */
+function buildChips(containerId, items, multi, key){
+  const box = document.getElementById(containerId);
+  box.innerHTML = "";
+  items.forEach(t => {
+    const b = document.createElement("button");
+    b.className = "chip"; b.textContent = t;
+    b.onclick = () => {
+      if(multi){
+        b.classList.toggle("sel");
+        const arr = state[key];
+        const i = arr.indexOf(t);
+        if(i >= 0) arr.splice(i,1); else arr.push(t);
+      } else {
+        [...box.children].forEach(c => c.classList.remove("sel"));
+        if(state[key] === t){ state[key] = null; }
+        else { b.classList.add("sel"); state[key] = t; }
+      }
+    };
+    box.appendChild(b);
+  });
+}
+function buildColors(){
+  const box = document.getElementById("c-color");
+  box.innerHTML = "";
+  COLORS.forEach(c => {
+    const d = document.createElement("button");
+    d.className = "sw"; d.style.background = c.h; d.title = c.n;
+    d.setAttribute("aria-label", c.n);
+    d.onclick = () => {
+      [...box.children].forEach(x => x.classList.remove("sel"));
+      if(state.color === c.n){ state.color = null; }
+      else { d.classList.add("sel"); state.color = c.n; }
+    };
+    box.appendChild(d);
+  });
+}
+
+/* ---------- Navigation ---------- */
+function go(id){
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+function pickZone(z){
+  state = {zone:z, body:[], texture:[], color:null, thought:null};
+  buildChips("c-body", BODY, true, "body");
+  buildChips("c-texture", TEXTURE, true, "texture");
+  buildColors();
+  buildChips("c-thoughts", THOUGHTS[z], false, "thought");
+  go("s-body");
+}
+function showResult(){
+  const z = ZONES[state.zone];
+  const r = document.getElementById("s-result");
+  r.style.setProperty("--accent", z.accent);
+  r.style.setProperty("--accent-deep", z.deep);
+  r.style.setProperty("--tint", z.tint);
+  document.getElementById("r-badge").textContent = z.badge;
+  document.getElementById("r-badge").style.background = z.accent;
+  document.getElementById("r-validate").textContent = z.validate;
+  document.getElementById("r-helplabel").textContent = z.helplabel;
+  document.getElementById("r-steps").innerHTML = z.steps.map(s => "<li>"+s+"</li>").join("");
+  document.getElementById("r-anchor").textContent = z.anchor;
+
+  // Spiegelung
+  const parts = [];
+  if(state.body.length) parts.push("<strong>" + state.body.join(", ") + "</strong>");
+  const qual = [];
+  if(state.texture.length) qual.push("eher <strong>" + state.texture.join(", ") + "</strong>");
+  if(state.color) qual.push("in <strong>" + state.color + "</strong>");
+  let txt = "";
+  if(parts.length || qual.length || state.thought){
+    txt = "Du hast wahrgenommen: ";
+    const seg = [];
+    if(parts.length) seg.push("etwas in " + parts.join(""));
+    if(qual.length) seg.push(qual.join(", "));
+    txt += seg.join(" – ") + ".";
+    if(state.thought) txt += " Und den Gedanken: <em>„" + state.thought + "\"</em>.";
+  } else {
+    txt = "Du hast dir gerade einen Moment Aufmerksamkeit geschenkt – auch wenn wenig spürbar war. Genau das zählt.";
+  }
+  document.getElementById("r-mirror").innerHTML = '<div class="m-label">Deine Wahrnehmung</div>' + txt;
+  go("s-result");
+}
+function restart(){
+  state = {zone:null, body:[], texture:[], color:null, thought:null};
+  go("s-start");
 }
 </script>
 </body>
