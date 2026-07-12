@@ -14,18 +14,9 @@
 
   *{margin:0;padding:0;box-sizing:border-box;}
   :root{
-    --cream:#FAF7F2;
-    --sage:#7A9E73;
-    --sage-deep:#5F8256;
-    --sage-soft:#EEF4EA;
-    --lilac:#7B5EA7;
-    --lilac-deep:#5C3D8F;
-    --lilac-soft:#F4F0FA;
-    --hypo:#8B7FA6;
-    --ink:#3B2A5A;
-    --ink-body:#4A3B66;
-    --ink-soft:#6B5E85;
-    --white:#FFFFFF;
+    --cream:#FAF7F2; --sage:#7A9E73; --sage-deep:#5F8256; --sage-soft:#EEF4EA;
+    --lilac:#7B5EA7; --lilac-deep:#5C3D8F; --lilac-soft:#F4F0FA; --hypo:#8B7FA6;
+    --ink:#3B2A5A; --ink-body:#4A3B66; --ink-soft:#6B5E85; --white:#FFFFFF;
     --serif:'Playfair Display', Georgia, 'Times New Roman', serif;
     --sans:'Lato', 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
   }
@@ -35,12 +26,8 @@
       radial-gradient(900px 500px at 85% -5%, rgba(123,94,167,.08), transparent 60%),
       radial-gradient(800px 500px at -10% 30%, rgba(122,158,115,.09), transparent 55%),
       var(--cream);
-    color:var(--ink-body);
-    font-family:var(--sans);
-    font-weight:400;
-    font-size:17px;
-    line-height:1.7;
-    -webkit-font-smoothing:antialiased;
+    color:var(--ink-body); font-family:var(--sans); font-weight:400;
+    font-size:17px; line-height:1.7; -webkit-font-smoothing:antialiased;
   }
   .masthead{text-align:center;padding:22px 24px 18px;background:rgba(250,247,242,.92);border-bottom:1px solid rgba(123,94,167,.16);}
   .masthead-title{font-family:var(--serif);font-weight:500;font-size:clamp(1.05rem,2.2vw,1.4rem);letter-spacing:.22em;text-transform:uppercase;color:var(--lilac-deep);}
@@ -50,11 +37,7 @@
   @media (max-width:480px){.wrap{padding:28px 16px 22px;} body{font-size:16px;}}
 
   .eyebrow{display:block;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--sage);font-weight:700;margin-bottom:16px;text-align:center;}
-  h1{
-    font-family:var(--serif);font-weight:500;
-    font-size:clamp(30px,6.5vw,42px);line-height:1.22;text-align:center;
-    color:var(--ink);margin-bottom:18px;letter-spacing:-.3px;
-  }
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(30px,6.5vw,42px);line-height:1.22;text-align:center;color:var(--ink);margin-bottom:18px;letter-spacing:-.3px;}
   h1 em, .q em{
     font-style:italic;color:var(--lilac);
     -webkit-box-decoration-break:clone;box-decoration-break:clone;
@@ -67,17 +50,14 @@
   .screen.active{display:block;}
   @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 
-  /* Fortschritts-Punkte */
   .dots{display:flex;justify-content:center;gap:8px;margin-bottom:22px;}
   .dots i{width:8px;height:8px;border-radius:50%;background:#DDD4E8;transition:background .3s;}
   .dots i.on{background:var(--lilac);}
 
-  /* Zonen-Karten */
   .zone{
     display:flex;align-items:center;gap:18px;width:100%;text-align:left;
-    background:var(--white);border:none;cursor:pointer;
-    border-radius:20px;padding:20px 22px;margin-bottom:14px;
-    font-family:var(--sans);color:var(--ink-body);
+    background:var(--white);border:none;cursor:pointer;border-radius:20px;
+    padding:20px 22px;margin-bottom:14px;font-family:var(--sans);color:var(--ink-body);
     box-shadow:inset 5px 0 0 var(--edge), 0 2px 16px rgba(123,94,167,.08);
     transition:transform .15s ease, box-shadow .2s ease;
   }
@@ -87,27 +67,40 @@
   .zone-quote{font-family:var(--serif);font-style:italic;font-size:14.5px;color:var(--edge);margin-top:1px;}
   .zone-words{font-size:13px;color:var(--ink-soft);margin-top:5px;line-height:1.5;}
 
-  /* Fragen-Screens */
-  .q{
-    font-family:var(--serif);font-weight:500;font-size:clamp(22px,5vw,28px);
-    line-height:1.35;text-align:center;color:var(--ink);margin-bottom:8px;
-  }
+  .q{font-family:var(--serif);font-weight:500;font-size:clamp(22px,5vw,28px);line-height:1.35;text-align:center;color:var(--ink);margin-bottom:8px;}
   .q-sub{text-align:center;font-size:14px;color:var(--ink-soft);margin-bottom:24px;}
   .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:8px;}
   .chip{
+    display:inline-flex;align-items:center;gap:7px;
     background:var(--white);border:1.5px solid #DDD4E8;color:var(--ink-body);
-    border-radius:999px;padding:9px 18px;font-family:var(--sans);font-size:14.5px;
+    border-radius:999px;padding:9px 16px;font-family:var(--sans);font-size:14.5px;
     cursor:pointer;transition:all .15s ease;
   }
+  .chip svg{width:17px;height:17px;flex:0 0 17px;color:var(--lilac);transition:color .15s;}
   .chip:hover{border-color:var(--lilac);}
   .chip.sel{background:var(--lilac);border-color:var(--lilac);color:var(--white);font-weight:700;}
-  .group-label{font-size:10.5px;letter-spacing:1.8px;text-transform:uppercase;font-weight:700;color:var(--sage);text-align:center;margin:22px 0 12px;}
+  .chip.sel svg{color:var(--white);}
+  .group-label{font-size:10.5px;letter-spacing:1.8px;text-transform:uppercase;font-weight:700;color:var(--sage);text-align:center;margin:24px 0 12px;}
+
+  /* Größe-Karten */
+  .sizes{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+  .size-card{
+    flex:1 1 150px;max-width:180px;background:var(--white);border:none;cursor:pointer;
+    border-radius:20px;padding:24px 16px 18px;text-align:center;font-family:var(--sans);
+    box-shadow:0 2px 16px rgba(123,94,167,.08);transition:transform .15s, box-shadow .2s;
+    color:var(--ink-body);
+  }
+  .size-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(123,94,167,.18);}
+  .size-card svg{width:64px;height:52px;color:var(--lilac);margin-bottom:10px;}
+  .size-name{font-family:var(--serif);font-weight:600;font-size:17px;color:var(--ink);}
+  .size-sub{font-size:12.5px;color:var(--ink-soft);margin-top:3px;}
 
   /* Farb-Swatches */
   .swatches{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;}
   .sw{
     width:44px;height:44px;border-radius:50%;cursor:pointer;border:3px solid transparent;
-    box-shadow:0 2px 10px rgba(59,42,90,.15);transition:transform .15s ease, border-color .15s ease;
+    box-shadow:0 2px 10px rgba(59,42,90,.14), inset 0 0 0 1px rgba(59,42,90,.08);
+    transition:transform .15s ease, border-color .15s ease;
   }
   .sw:hover{transform:scale(1.08);}
   .sw.sel{border-color:var(--ink);transform:scale(1.12);}
@@ -122,15 +115,12 @@
   .btn:hover{background:var(--lilac-deep);transform:translateY(-2px);}
   .btn-ghost{
     display:inline-block;background:transparent;color:var(--lilac);
-    border:1.5px solid var(--lilac);border-radius:999px;
-    padding:11px 26px;font-family:var(--sans);font-size:14px;font-weight:700;
-    cursor:pointer;transition:background .2s ease;
+    border:1.5px solid var(--lilac);border-radius:999px;padding:11px 26px;
+    font-family:var(--sans);font-size:14px;font-weight:700;cursor:pointer;transition:background .2s;
   }
   .btn-ghost:hover{background:var(--lilac-soft);}
-  .skip{display:block;margin:14px auto 0;background:none;border:none;
-    font-family:var(--sans);font-size:13px;color:var(--ink-soft);cursor:pointer;text-decoration:underline;}
+  .skip{display:block;margin:14px auto 0;background:none;border:none;font-family:var(--sans);font-size:13px;color:var(--ink-soft);cursor:pointer;text-decoration:underline;}
 
-  /* Fühlen-Screen */
   .feelbox{
     background:var(--white);border-radius:24px;padding:34px 30px;margin:0 auto 6px;
     max-width:520px;box-shadow:0 2px 16px rgba(123,94,167,.08);text-align:center;
@@ -138,17 +128,13 @@
   .feelbox p{font-size:15.5px;margin-bottom:14px;}
   .feelbox p:last-child{margin-bottom:0;}
 
-  /* Ergebnis */
   .badge-row{text-align:center;margin-bottom:14px;}
   .mode-badge{
     display:inline-block;background:var(--accent,#7B5EA7);color:var(--white);
     font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;
     border-radius:999px;padding:8px 20px;
   }
-  .card{
-    background:var(--white);border-radius:24px;padding:32px 30px;margin-bottom:20px;
-    box-shadow:0 2px 16px rgba(123,94,167,.08);
-  }
+  .card{background:var(--white);border-radius:24px;padding:32px 30px;margin-bottom:20px;box-shadow:0 2px 16px rgba(123,94,167,.08);}
   @media (max-width:480px){.card{padding:26px 20px;}}
   .mirror{
     border-radius:18px;padding:20px 24px;margin-bottom:20px;
@@ -180,7 +166,7 @@
 
 <div class="wrap">
 
-  <!-- 0 · START: ZONE -->
+  <!-- 0 · ZONE -->
   <section class="screen active" id="s-start">
     <span class="eyebrow">Dein täglicher Regulations-Check · 2 Minuten</span>
     <h1>Wo bin ich <em>gerade</em>?</h1>
@@ -188,29 +174,15 @@
 
     <button class="zone" style="--edge:#7B5EA7;" onclick="pickZone('hyper')">
       <svg class="ic" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M4 30 C9 8, 14 8, 19 30 S28 52, 33 30 S42 8, 48 22" stroke="#7B5EA7" stroke-width="2.6" stroke-linecap="round"/></svg>
-      <span>
-        <span class="zone-name">Zu viel Energie</span>
-        <div class="zone-quote">„Ich muss …"</div>
-        <div class="zone-words">rastlos · angespannt · gereizt · alarmbereit</div>
-      </span>
+      <span><span class="zone-name">Zu viel Energie</span><div class="zone-quote">„Ich muss …"</div><div class="zone-words">rastlos · angespannt · gereizt · alarmbereit</div></span>
     </button>
-
     <button class="zone" style="--edge:#7A9E73;" onclick="pickZone('ventral')">
       <svg class="ic" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M4 26 C12 17, 18 17, 26 26 S40 35, 48 26" stroke="#7A9E73" stroke-width="2.6" stroke-linecap="round"/></svg>
-      <span>
-        <span class="zone-name">Bei mir</span>
-        <div class="zone-quote">„Ich kann …"</div>
-        <div class="zone-words">ruhig · präsent · verbunden · klar</div>
-      </span>
+      <span><span class="zone-name">Bei mir</span><div class="zone-quote">„Ich kann …"</div><div class="zone-words">ruhig · präsent · verbunden · klar</div></span>
     </button>
-
     <button class="zone" style="--edge:#8B7FA6;" onclick="pickZone('hypo')">
       <svg class="ic" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M4 24 C12 26, 18 30, 26 29 S40 33, 48 34" stroke="#8B7FA6" stroke-width="2.6" stroke-linecap="round"/></svg>
-      <span>
-        <span class="zone-name">Zu wenig Energie</span>
-        <div class="zone-quote">„Ich gebe auf …"</div>
-        <div class="zone-words">erschöpft · leer · taub · schwer</div>
-      </span>
+      <span><span class="zone-name">Zu wenig Energie</span><div class="zone-quote">„Ich gebe auf …"</div><div class="zone-words">erschöpft · leer · taub · schwer</div></span>
     </button>
 
     <p class="tip">Mach diesen Check einmal am Tag – so lernt dein Nervensystem, sich selbst früher wahrzunehmen.</p>
@@ -218,30 +190,55 @@
 
   <!-- 1 · KÖRPER -->
   <section class="screen" id="s-body">
-    <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
     <p class="q">Wie fühlt sich das gerade in deinem <em>Körper</em> an?</p>
     <p class="q-sub">Wo spürst du es am deutlichsten? Du kannst mehrere Orte wählen.</p>
     <div class="chips" id="c-body"></div>
-    <div class="nav"><button class="btn" onclick="go('s-quality')">Weiter</button></div>
-    <button class="skip" onclick="go('s-quality')">Ich spüre gerade wenig – einfach weiter</button>
+    <div class="nav"><button class="btn" onclick="go('s-size')">Weiter</button></div>
+    <button class="skip" onclick="go('s-size')">Ich spüre gerade wenig – einfach weiter</button>
   </section>
 
-  <!-- 2 · BESCHAFFENHEIT & FARBE -->
+  <!-- 2 · GRÖSSE -->
+  <section class="screen" id="s-size">
+    <div class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    <p class="q">Wie <em>groß</em> ist dieses Gefühl?</p>
+    <p class="q-sub">Wenn du ihm eine Größe geben müsstest …</p>
+    <div class="sizes">
+      <button class="size-card" onclick="pickSize('groß wie ein Berg')">
+        <svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 42 L20 14 L28 26 L38 8 L60 42 Z"/><path d="M35 13 l3 5 4 -3"/></svg>
+        <div class="size-name">Groß</div><div class="size-sub">wie ein Berg</div>
+      </button>
+      <button class="size-card" onclick="pickSize('mittelgroß wie ein Stuhl')">
+        <svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6 v22 M22 28 h20 M22 28 v14 M42 28 v14 M42 22 v6 M22 14 h20 v8"/></svg>
+        <div class="size-name">Mittel</div><div class="size-sub">wie ein Stuhl</div>
+      </button>
+      <button class="size-card" onclick="pickSize('klein wie ein Knopf')">
+        <svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="32" cy="24" r="16"/><circle cx="27" cy="20" r="1.6" fill="currentColor"/><circle cx="37" cy="20" r="1.6" fill="currentColor"/><circle cx="27" cy="28" r="1.6" fill="currentColor"/><circle cx="37" cy="28" r="1.6" fill="currentColor"/></svg>
+        <div class="size-name">Klein</div><div class="size-sub">wie ein Knopf</div>
+      </button>
+    </div>
+    <button class="skip" onclick="go('s-quality')">Schwer zu sagen – einfach weiter</button>
+  </section>
+
+  <!-- 3 · GESTALT: BESCHAFFENHEIT + BEWEGUNG + FARBE -->
   <section class="screen" id="s-quality">
-    <div class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
+    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
     <p class="q">Wenn das, was du spürst, eine <em>Gestalt</em> hätte …</p>
-    <p class="q-sub">Wie wäre es beschaffen? Wähle, was passt – es darf auch überraschen.</p>
-    <div class="group-label">Beschaffenheit</div>
+    <p class="q-sub">Wähle, was passt – es darf auch überraschen.</p>
+    <div class="group-label">Wie fühlt es sich an?</div>
     <div class="chips" id="c-texture"></div>
-    <div class="group-label">Und welche Farbe hätte es?</div>
+    <div class="group-label">Und wie bewegt es sich?</div>
+    <div class="chips" id="c-movement"></div>
+    <div class="group-label">Welche Farbe hätte es?</div>
     <div class="swatches" id="c-color"></div>
+    <div class="swatches" id="c-color2" style="margin-top:12px;"></div>
     <div class="nav"><button class="btn" onclick="go('s-thoughts')">Weiter</button></div>
     <button class="skip" onclick="go('s-thoughts')">Schwer zu sagen – einfach weiter</button>
   </section>
 
-  <!-- 3 · GEDANKEN -->
+  <!-- 4 · GEDANKEN -->
   <section class="screen" id="s-thoughts">
-    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
+    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
     <p class="q">Und welche <em>Gedanken</em> sind gerade da?</p>
     <p class="q-sub">Wähle, was dir bekannt vorkommt.</p>
     <div class="chips" id="c-thoughts"></div>
@@ -249,9 +246,9 @@
     <button class="skip" onclick="go('s-feel')">Keiner davon – einfach weiter</button>
   </section>
 
-  <!-- 4 · FÜHLEN -->
+  <!-- 5 · FÜHLEN -->
   <section class="screen" id="s-feel">
-    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
     <p class="q">Bleib einen Moment <em>genau hier</em>.</p>
     <div class="feelbox">
       <p>Richte deine Aufmerksamkeit wie eine <strong>Taschenlampe</strong> auf das, was du gerade wahrgenommen hast – und leuchte sanft darauf.</p>
@@ -261,9 +258,9 @@
     <div class="nav"><button class="btn" onclick="showResult()">Ich bin bereit – weiter</button></div>
   </section>
 
-  <!-- 5 · ERGEBNIS -->
+  <!-- 6 · ERGEBNIS -->
   <section class="screen" id="s-result">
-    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
     <div class="badge-row"><span class="mode-badge" id="r-badge"></span></div>
     <div class="card">
       <div class="mirror" id="r-mirror"></div>
@@ -286,14 +283,51 @@
 </footer>
 
 <script>
+/* ---------- Icons (dünne Linien, currentColor) ---------- */
+const IC = {
+  sonne:'<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/>',
+  flamme:'<path d="M12 3c1 3-3 4.5-3 8a4.5 4.5 0 0 0 9 0c0-2-1-3.5-2-5-.3 1.2-1 2-2 2.4C14.5 6.5 13.5 4.5 12 3z"/>',
+  welle:'<path d="M3 13c3-3 6-3 9 0s6 3 9 0"/>',
+  schnee:'<path d="M12 4v16M5 8l14 8M19 8L5 16"/>',
+  wolke:'<path d="M7 17h10a4 4 0 0 0 .8-7.9A5.5 5.5 0 0 0 7 8.6 4 4 0 0 0 7 17z"/>',
+  watte:'<path d="M6 16h7a3.2 3.2 0 0 0 .6-6.3A4.2 4.2 0 0 0 6 9.5 3.3 3.3 0 0 0 6 16z"/><path d="M13 19h5a2.6 2.6 0 0 0 .5-5.1"/>',
+  stein:'<path d="M5 16l3-7 7-2 4 6-3 4z"/>',
+  eng:'<path d="M7 7l4 5-4 5M17 7l-4 5 4 5"/>',
+  weit:'<path d="M11 7l-4 5 4 5M13 7l4 5-4 5"/>',
+  schwer:'<path d="M9 9h6l2 9H7z"/><path d="M10 9a2 2 0 0 1 4 0"/>',
+  feder:'<path d="M18 5C12 6 7.5 10.5 6 18"/><path d="M6.5 15.5C11 15 15 11.5 17 7"/><path d="M8 18l9.5-12.5"/>',
+  kribbel:'<circle cx="7" cy="9" r="1" fill="currentColor" stroke="none"/><circle cx="13" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="17" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="15" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="17" r="1" fill="currentColor" stroke="none"/><path d="M12 11.5v1M11.5 12h1"/>',
+  dumpf:'<circle cx="12" cy="12" r="6" opacity=".45"/><circle cx="12" cy="12" r="2.4"/>',
+  flirren:'<path d="M4 14l2.6-4 2.7 4 2.7-4 2.7 4 2.7-4 2.6 4"/>',
+  linie:'<path d="M4 12h16"/>',
+  spirale:'<path d="M12 12a2 2 0 1 0 2 2 4 4 0 1 1-4-6 6 6 0 1 1-4 8"/>',
+  stachel:'<path d="M4 16l2-7 2 7 2-7 2 7 2-7 2 7 2-7 2 7"/>',
+  holprig:'<path d="M3 14q2-4 4 0t4 0 4 0 4 0"/>'
+};
+function iconSvg(name){
+  return name && IC[name] ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+IC[name]+'</svg>' : '';
+}
+
 /* ---------- Daten ---------- */
 const BODY = ["Brust","Hals & Kiefer","Bauch","Schultern & Nacken","Kopf","Arme & Beine","überall & diffus","kaum spürbar"];
-const TEXTURE = ["warm","heiß","kühl","kalt","weich","hart","eng","weit","schwer","leicht","kribbelnd","dumpf","wie Watte","flirrend"];
-const COLORS = [
+const TEXTURE = [
+  {t:"warm",i:"sonne"},{t:"heiß",i:"flamme"},{t:"kühl",i:"welle"},{t:"kalt",i:"schnee"},
+  {t:"weich",i:"wolke"},{t:"wie Watte",i:"watte"},{t:"hart",i:"stein"},
+  {t:"eng",i:"eng"},{t:"weit",i:"weit"},{t:"schwer",i:"schwer"},{t:"leicht",i:"feder"},
+  {t:"kribbelnd",i:"kribbel"},{t:"dumpf",i:"dumpf"},{t:"flirrend",i:"flirren"}
+];
+const MOVEMENT = [
+  {t:"unbeweglich",i:"linie"},{t:"beweglich",i:"spirale"},{t:"stachelig",i:"stachel"},{t:"holprig",i:"holprig"}
+];
+const COLORS1 = [
   {n:"Rot",h:"#C05B5B"},{n:"Orange",h:"#D98E4A"},{n:"Gelb",h:"#E3C25C"},
   {n:"Grün",h:"#7A9E73"},{n:"Blau",h:"#6B8FB3"},{n:"Violett",h:"#7B5EA7"},
-  {n:"Rosa",h:"#D8A0B6"},{n:"Braun",h:"#9A7B5F"},{n:"Grau",h:"#A9A4B0"},
-  {n:"Schwarz",h:"#3B3B3F"},{n:"Hell",h:"#F1ECE2"}
+  {n:"Rosa",h:"#D8A0B6"},{n:"Braun",h:"#9A7B5F"},{n:"Grau",h:"#A9A4B0"},{n:"Schwarz",h:"#3B3B3F"}
+];
+const COLORS2 = [
+  {n:"Zartrosa",h:"#F2D5DC"},{n:"Pfirsich",h:"#F6DFC9"},{n:"Vanille",h:"#F6EBD2"},
+  {n:"Zartmint",h:"#DCEEDF"},{n:"Hellblau",h:"#D8E6F2"},{n:"Flieder",h:"#E4DCF2"},
+  {n:"Lavendel",h:"#EDE6F5"},{n:"Zartsalbei",h:"#D8E8D4"},{n:"Perlgrau",h:"#E8E6EA"},{n:"Hell",h:"#FBFAF7"}
 ];
 const THOUGHTS = {
   hyper:["Ich muss funktionieren","Ich darf keinen Fehler machen","Alle wollen etwas von mir","Ich muss das kontrollieren","Es ist alles zu viel"],
@@ -340,39 +374,40 @@ const ZONES = {
 };
 
 /* ---------- State (nur im Speicher, wird nie übertragen) ---------- */
-let state = {zone:null, body:[], texture:[], color:null, thought:null};
+let state = {zone:null, body:[], size:null, texture:[], movement:null, color:null, thought:null};
 
-/* ---------- Chips bauen ---------- */
+/* ---------- Bausteine ---------- */
 function buildChips(containerId, items, multi, key){
   const box = document.getElementById(containerId);
   box.innerHTML = "";
-  items.forEach(t => {
+  items.forEach(item => {
+    const label = typeof item === "string" ? item : item.t;
+    const icon = typeof item === "string" ? "" : iconSvg(item.i);
     const b = document.createElement("button");
-    b.className = "chip"; b.textContent = t;
+    b.className = "chip"; b.innerHTML = icon + "<span>" + label + "</span>";
     b.onclick = () => {
       if(multi){
         b.classList.toggle("sel");
-        const arr = state[key];
-        const i = arr.indexOf(t);
-        if(i >= 0) arr.splice(i,1); else arr.push(t);
+        const arr = state[key]; const i = arr.indexOf(label);
+        if(i >= 0) arr.splice(i,1); else arr.push(label);
       } else {
         [...box.children].forEach(c => c.classList.remove("sel"));
-        if(state[key] === t){ state[key] = null; }
-        else { b.classList.add("sel"); state[key] = t; }
+        if(state[key] === label){ state[key] = null; }
+        else { b.classList.add("sel"); state[key] = label; }
       }
     };
     box.appendChild(b);
   });
 }
-function buildColors(){
-  const box = document.getElementById("c-color");
+function buildColors(containerId, colors){
+  const box = document.getElementById(containerId);
   box.innerHTML = "";
-  COLORS.forEach(c => {
+  colors.forEach(c => {
     const d = document.createElement("button");
-    d.className = "sw"; d.style.background = c.h; d.title = c.n;
-    d.setAttribute("aria-label", c.n);
+    d.className = "sw"; d.title = c.n; d.setAttribute("aria-label", c.n);
+    d.style.background = "radial-gradient(circle at 35% 32%, rgba(255,255,255,.5), rgba(255,255,255,0) 55%), " + c.h;
     d.onclick = () => {
-      [...box.children].forEach(x => x.classList.remove("sel"));
+      document.querySelectorAll("#c-color .sw, #c-color2 .sw").forEach(x => x.classList.remove("sel"));
       if(state.color === c.n){ state.color = null; }
       else { d.classList.add("sel"); state.color = c.n; }
     };
@@ -387,13 +422,17 @@ function go(id){
   window.scrollTo({top:0, behavior:"smooth"});
 }
 function pickZone(z){
-  state = {zone:z, body:[], texture:[], color:null, thought:null};
+  state = {zone:z, body:[], size:null, texture:[], movement:null, color:null, thought:null};
   buildChips("c-body", BODY, true, "body");
   buildChips("c-texture", TEXTURE, true, "texture");
-  buildColors();
+  buildChips("c-movement", MOVEMENT, false, "movement");
+  buildColors("c-color", COLORS1);
+  buildColors("c-color2", COLORS2);
   buildChips("c-thoughts", THOUGHTS[z], false, "thought");
   go("s-body");
 }
+function pickSize(s){ state.size = s; go("s-quality"); }
+
 function showResult(){
   const z = ZONES[state.zone];
   const r = document.getElementById("s-result");
@@ -407,19 +446,17 @@ function showResult(){
   document.getElementById("r-steps").innerHTML = z.steps.map(s => "<li>"+s+"</li>").join("");
   document.getElementById("r-anchor").textContent = z.anchor;
 
-  // Spiegelung
-  const parts = [];
-  if(state.body.length) parts.push("<strong>" + state.body.join(", ") + "</strong>");
+  const seg = [];
+  if(state.body.length) seg.push("etwas in <strong>" + state.body.join(", ") + "</strong>");
+  if(state.size) seg.push("<strong>" + state.size + "</strong>");
   const qual = [];
-  if(state.texture.length) qual.push("eher <strong>" + state.texture.join(", ") + "</strong>");
-  if(state.color) qual.push("in <strong>" + state.color + "</strong>");
-  let txt = "";
-  if(parts.length || qual.length || state.thought){
-    txt = "Du hast wahrgenommen: ";
-    const seg = [];
-    if(parts.length) seg.push("etwas in " + parts.join(""));
-    if(qual.length) seg.push(qual.join(", "));
-    txt += seg.join(" – ") + ".";
+  if(state.texture.length) qual.push(state.texture.join(", "));
+  if(state.movement) qual.push(state.movement);
+  if(qual.length) seg.push("eher <strong>" + qual.join(" – ") + "</strong>");
+  if(state.color) seg.push("in <strong>" + state.color + "</strong>");
+  let txt;
+  if(seg.length || state.thought){
+    txt = "Du hast wahrgenommen: " + (seg.length ? seg.join(" – ") + "." : "");
     if(state.thought) txt += " Und den Gedanken: <em>„" + state.thought + "\"</em>.";
   } else {
     txt = "Du hast dir gerade einen Moment Aufmerksamkeit geschenkt – auch wenn wenig spürbar war. Genau das zählt.";
@@ -428,7 +465,7 @@ function showResult(){
   go("s-result");
 }
 function restart(){
-  state = {zone:null, body:[], texture:[], color:null, thought:null};
+  state = {zone:null, body:[], size:null, texture:[], movement:null, color:null, thought:null};
   go("s-start");
 }
 </script>
