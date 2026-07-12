@@ -154,6 +154,24 @@
   .center{text-align:center;}
   .restart{margin-top:24px;}
 
+
+  /* Aktivierungs-Slider */
+  .level-wrap{max-width:420px;margin:0 auto;text-align:center;}
+  .level-num{font-family:var(--serif);font-weight:600;font-size:56px;color:var(--lilac-deep);line-height:1;margin-bottom:6px;}
+  .level-lab{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;color:var(--sage);margin-bottom:22px;}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:999px;background:linear-gradient(90deg,#D8E8D4,#DDD4E8,#7B5EA7);outline:none;}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:28px;height:28px;border-radius:50%;background:var(--lilac);border:3px solid var(--white);box-shadow:0 2px 10px rgba(123,94,167,.4);cursor:pointer;}
+  input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--lilac);border:3px solid var(--white);box-shadow:0 2px 10px rgba(123,94,167,.4);cursor:pointer;}
+  .range-ends{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-soft);margin-top:8px;}
+
+  /* Entscheidungs-Buttons (Angemessenheit / Wirkung) */
+  .choice{display:flex;flex-direction:column;gap:12px;max-width:420px;margin:26px auto 0;}
+  .choice .btn, .choice .btn-ghost{width:100%;text-align:center;}
+
+  /* Übungs-Screen */
+  .ex-note{max-width:480px;margin:0 auto 16px;background:var(--sage-soft);border-radius:14px;padding:12px 18px;font-size:13.5px;color:#3E5138;text-align:center;}
+  .ex-count{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;color:var(--ink-soft);text-align:center;margin-bottom:10px;}
+
   footer{max-width:640px;margin:0 auto;padding:20px 22px 40px;font-size:12px;color:#9A8FB0;line-height:1.65;text-align:center;}
 </style>
 </head>
@@ -188,9 +206,24 @@
     <p class="tip">Mach diesen Check einmal am Tag – so lernt dein Nervensystem, sich selbst früher wahrzunehmen.</p>
   </section>
 
+
+  <!-- 1 · AKTIVIERUNG -->
+  <section class="screen" id="s-level">
+    <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <p class="q">Wie <em>stark</em> ist deine Aktivierung gerade?</p>
+    <p class="q-sub">Es gibt kein richtig – nur dein Gefühl für den Moment.</p>
+    <div class="level-wrap">
+      <div class="level-num" id="lvl-num">5</div>
+      <div class="level-lab">von 10</div>
+      <input type="range" min="0" max="10" value="5" id="lvl-range" oninput="setLevel(this.value)">
+      <div class="range-ends"><span>ganz ruhig</span><span>sehr stark</span></div>
+    </div>
+    <div class="nav"><button class="btn" onclick="go('s-body')">Weiter</button></div>
+  </section>
+
   <!-- 1 · KÖRPER -->
   <section class="screen" id="s-body">
-    <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
     <p class="q">Wie fühlt sich das gerade in deinem <em>Körper</em> an?</p>
     <p class="q-sub">Wo spürst du es am deutlichsten? Du kannst mehrere Orte wählen.</p>
     <div class="chips" id="c-body"></div>
@@ -200,7 +233,7 @@
 
   <!-- 2 · GRÖSSE -->
   <section class="screen" id="s-size">
-    <div class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    <div class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
     <p class="q">Wie <em>groß</em> ist dieses Gefühl?</p>
     <p class="q-sub">Wenn du ihm eine Größe geben müsstest …</p>
     <div class="sizes">
@@ -222,7 +255,7 @@
 
   <!-- 3 · GESTALT: BESCHAFFENHEIT + BEWEGUNG + FARBE -->
   <section class="screen" id="s-quality">
-    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
+    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
     <p class="q">Wenn das, was du spürst, eine <em>Gestalt</em> hätte …</p>
     <p class="q-sub">Wähle, was passt – es darf auch überraschen.</p>
     <div class="group-label">Wie fühlt es sich an?</div>
@@ -238,7 +271,7 @@
 
   <!-- 4 · GEDANKEN -->
   <section class="screen" id="s-thoughts">
-    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
+    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
     <p class="q">Und welche <em>Gedanken</em> sind gerade da?</p>
     <p class="q-sub">Wähle, was dir bekannt vorkommt.</p>
     <div class="chips" id="c-thoughts"></div>
@@ -248,19 +281,49 @@
 
   <!-- 5 · FÜHLEN -->
   <section class="screen" id="s-feel">
-    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
     <p class="q">Bleib einen Moment <em>genau hier</em>.</p>
     <div class="feelbox">
       <p>Richte deine Aufmerksamkeit wie eine <strong>Taschenlampe</strong> auf das, was du gerade wahrgenommen hast – und leuchte sanft darauf.</p>
       <p>Nicht bewerten. Nicht wegmachen. Nur fühlen – und <strong>durchatmen</strong>, auch wenn es kurz intensiver wird.</p>
       <p class="muted">Nimm dir dafür zwei, drei ruhige Atemzüge Zeit.</p>
     </div>
-    <div class="nav"><button class="btn" onclick="showResult()">Ich bin bereit – weiter</button></div>
+    <div class="nav"><button class="btn" onclick="afterFeel()">Ich bin bereit – weiter</button></div>
+  </section>
+
+
+  <!-- 6 · ANGEMESSEN? -->
+  <section class="screen" id="s-adequate">
+    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+    <p class="q">Ist diese Reaktion <em>angemessen</em> für diesen Moment?</p>
+    <p class="q-sub">Manchmal ist Aktivierung genau richtig – vor etwas Wichtigem, nach einem langen Tag. Und manchmal fühlt es sich eher an wie früher.</p>
+    <div class="choice">
+      <button class="btn" onclick="adequateYes()">Ja – das passt zu jetzt</button>
+      <button class="btn-ghost" onclick="adequateNo()">Nein – es fühlt sich an wie früher</button>
+    </div>
+  </section>
+
+  <!-- 7 · ÜBUNG -->
+  <section class="screen" id="s-exercise">
+    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+    <div class="badge-row"><span class="mode-badge" id="ex-badge"></span></div>
+    <div id="ex-mb"></div>
+    <p class="ex-count" id="ex-count"></p>
+    <p class="q" id="ex-title"></p>
+    <div class="card">
+      <ul class="steps" id="ex-steps"></ul>
+    </div>
+    <p class="tip">Höchstens zwei Minuten – und beobachte dabei: Verändert sich etwas? Fühlt es sich gut an?</p>
+    <div class="choice">
+      <button class="btn" onclick="exGood()">Tut gut – etwas verändert sich</button>
+      <button class="btn-ghost" onclick="exBad()">Hilft mir gerade nicht</button>
+    </div>
+    <button class="skip" onclick="buildResult('enough')">Für heute genug</button>
   </section>
 
   <!-- 6 · ERGEBNIS -->
   <section class="screen" id="s-result">
-    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+    <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
     <div class="badge-row"><span class="mode-badge" id="r-badge"></span></div>
     <div class="card">
       <div class="mirror" id="r-mirror"></div>
@@ -373,8 +436,66 @@ const ZONES = {
   }
 };
 
+
+/* ---------- Übungspools (kuratiert nach Arielle Schwartz / Christinas Notizen) ---------- */
+const EXERCISES = {
+  hyper:[
+    {name:"Bilaterale Streichbewegungen", steps:[
+      "Leg deine Hände überkreuz auf die Oberarme – rechts auf links, links auf rechts.",
+      "Streich langsam abwechselnd die Arme entlang: links, rechts, links … wie ein ruhiger Takt.",
+      "Beobachte dabei: Verändert sich etwas – im Atem, in der Anspannung?"]},
+    {name:"Verlängerte Ausatmung", steps:[
+      "Atme 4 Sekunden ein – und 8 Sekunden lang aus. Vier Runden.",
+      "Der lange Ausatem sagt deinem System: Es ist sicher genug, langsamer zu werden."]},
+    {name:"Kraft darf Ausdruck finden", steps:[
+      "Wenn Wut oder Druck da ist: Stell dich an eine Wand und drück fest dagegen – 10 bis 15 Sekunden.",
+      "Oder schüttel Arme und Schultern kräftig aus.",
+      "Dann loslassen und hörbar ausatmen. Manchmal braucht Energie Bewegung – nicht Beruhigung."]},
+    {name:"Summen", steps:[
+      "Atme ein – und summe beim Ausatmen tief und lang: mmmmh.",
+      "Spür die Vibration in Brust und Hals. Drei, vier Runden.",
+      "Deine Stimme beruhigt dein System von innen."]},
+    {name:"Füße spüren & Reize reduzieren", steps:[
+      "Spür beide Füße am Boden – Ferse, Ballen, Zehen. Drück sie sanft in den Boden.",
+      "Leg eine Sache weg, schalte einen Ton aus – ein Moment Stille."]}
+  ],
+  ventral:[
+    {name:"Verankern", steps:[
+      "Spür nach: Woran merkst du gerade, dass du bei dir bist – im Atem, in den Schultern, im Bauch?",
+      "Benenne es innerlich: „So fühlt sich reguliert an.“",
+      "Genieße bewusst drei Atemzüge – dein System merkt sich den Weg hierher."]},
+    {name:"Hand aufs Herz – Verbindung", steps:[
+      "Leg eine Hand auf dein Herz und spür die Wärme.",
+      "Denk an etwas oder jemanden, der dir guttut – ein Mensch, ein Ort, etwas Größeres.",
+      "Bleib zwei, drei Atemzüge in diesem Gefühl von Verbindung."]}
+  ],
+  hypo:[
+    {name:"Cat-Cow im Sitzen", steps:[
+      "Setz dich aufrecht, Hände auf die Knie.",
+      "Einatmen: Brust öffnen, leicht ins Hohlkreuz, Blick sanft nach vorn oben.",
+      "Ausatmen: einrollen, Rücken rund, Kinn zur Brust.",
+      "Vier, fünf langsame Runden – dein Körper pendelt sich zurück ins Spüren."]},
+    {name:"Meine Beine tragen mich", steps:[
+      "Stell beide Füße fest auf den Boden und drück sie sanft hinein.",
+      "Spür die Kraft in den Beinen – magst du im Sitzen sanft abwechselnd stampfen?",
+      "Sag dir innerlich: Mein Körper trägt mich."]},
+    {name:"Wärme & Brustbein", steps:[
+      "Reib deine Handflächen aneinander, bis sie warm werden.",
+      "Leg eine Hand aufs Brustbein, streich mit der anderen langsam über den Unterarm – wie ein freundliches Begrüßen."]},
+    {name:"Licht & Luft", steps:[
+      "Steh auf und geh einen Moment ans Fenster.",
+      "Licht, frische Luft, ein Blick nach draußen – sanfte Signale zum Auftauchen."]}
+  ]
+};
+const ADEQUATE_TEXT = {
+  hyper:"Dann darf diese Energie da sein – sie arbeitet gerade für dich. Aufregung vor etwas Wichtigem ist gesund. Du musst nichts wegmachen – nimm die Kraft mit in das, was ansteht.",
+  hypo:"Dann darf diese Müdigkeit da sein – vielleicht braucht dein Körper heute genau das: Ruhe nach viel. Du musst nichts wegmachen – gib dir die Erlaubnis dazu."
+};
+const ADEQUATE_ANCHOR = { hyper:"„Diese Kraft gehört zu mir.“", hypo:"„Ich darf mir Ruhe geben.“" };
+
 /* ---------- State (nur im Speicher, wird nie übertragen) ---------- */
-let state = {zone:null, body:[], size:null, texture:[], movement:null, color:null, thought:null};
+let state = {zone:null, level:5, body:[], size:null, texture:[], movement:null, color:null, thought:null, exIndex:0, lastEx:null};
+function setLevel(v){ state.level = parseInt(v,10); document.getElementById("lvl-num").textContent = v; }
 
 /* ---------- Bausteine ---------- */
 function buildChips(containerId, items, multi, key){
@@ -422,31 +543,46 @@ function go(id){
   window.scrollTo({top:0, behavior:"smooth"});
 }
 function pickZone(z){
-  state = {zone:z, body:[], size:null, texture:[], movement:null, color:null, thought:null};
+  state = {zone:z, level:5, body:[], size:null, texture:[], movement:null, color:null, thought:null, exIndex:0, lastEx:null};
+  document.getElementById("lvl-range").value = 5; document.getElementById("lvl-num").textContent = "5";
   buildChips("c-body", BODY, true, "body");
   buildChips("c-texture", TEXTURE, true, "texture");
   buildChips("c-movement", MOVEMENT, false, "movement");
   buildColors("c-color", COLORS1);
   buildColors("c-color2", COLORS2);
   buildChips("c-thoughts", THOUGHTS[z], false, "thought");
-  go("s-body");
+  go("s-level");
 }
 function pickSize(s){ state.size = s; go("s-quality"); }
 
-function showResult(){
+function afterFeel(){
+  if(state.zone === "ventral"){ startExercise(); } else { go("s-adequate"); }
+}
+function adequateYes(){ buildResult("adequate"); }
+function adequateNo(){ startExercise(); }
+function startExercise(){ state.exIndex = 0; renderExercise(false); go("s-exercise"); }
+function renderExercise(showMB){
   const z = ZONES[state.zone];
-  const r = document.getElementById("s-result");
-  r.style.setProperty("--accent", z.accent);
-  r.style.setProperty("--accent-deep", z.deep);
-  r.style.setProperty("--tint", z.tint);
-  document.getElementById("r-badge").textContent = z.badge;
-  document.getElementById("r-badge").style.background = z.accent;
-  document.getElementById("r-validate").textContent = z.validate;
-  document.getElementById("r-helplabel").textContent = z.helplabel;
-  document.getElementById("r-steps").innerHTML = z.steps.map(s => "<li>"+s+"</li>").join("");
-  document.getElementById("r-anchor").textContent = z.anchor;
-
+  const pool = EXERCISES[state.zone];
+  const ex = pool[state.exIndex];
+  state.lastEx = ex.name;
+  document.getElementById("ex-badge").textContent = z.badge;
+  document.getElementById("ex-badge").style.background = z.accent;
+  document.getElementById("ex-mb").innerHTML = showMB ? '<div class="ex-note">Gut, dass du das merkst – Nein sagen zur Methode ist auch Regulation (deine Micro-Boundary). Probier etwas anderes:</div>' : "";
+  document.getElementById("ex-count").textContent = "Übung " + (state.exIndex+1) + " von " + pool.length;
+  document.getElementById("ex-title").innerHTML = ex.name;
+  document.getElementById("ex-steps").innerHTML = ex.steps.map(s => "<li>"+s+"</li>").join("");
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+function exGood(){ buildResult("worked"); }
+function exBad(){
+  const pool = EXERCISES[state.zone];
+  if(state.exIndex < pool.length - 1){ state.exIndex++; renderExercise(true); }
+  else { buildResult("enough"); }
+}
+function mirrorHtml(){
   const seg = [];
+  seg.push("Aktivierung <strong>" + state.level + "/10</strong>");
   if(state.body.length) seg.push("etwas in <strong>" + state.body.join(", ") + "</strong>");
   if(state.size) seg.push("<strong>" + state.size + "</strong>");
   const qual = [];
@@ -454,18 +590,43 @@ function showResult(){
   if(state.movement) qual.push(state.movement);
   if(qual.length) seg.push("eher <strong>" + qual.join(" – ") + "</strong>");
   if(state.color) seg.push("in <strong>" + state.color + "</strong>");
-  let txt;
-  if(seg.length || state.thought){
-    txt = "Du hast wahrgenommen: " + (seg.length ? seg.join(" – ") + "." : "");
-    if(state.thought) txt += " Und den Gedanken: <em>„" + state.thought + "\"</em>.";
-  } else {
-    txt = "Du hast dir gerade einen Moment Aufmerksamkeit geschenkt – auch wenn wenig spürbar war. Genau das zählt.";
+  let txt = "Du hast wahrgenommen: " + seg.join(" – ") + ".";
+  if(state.thought) txt += " Und den Gedanken: <em>„" + state.thought + "\"</em>.";
+  return '<div class="m-label">Deine Wahrnehmung</div>' + txt;
+}
+function buildResult(variant){
+  const z = ZONES[state.zone];
+  const r = document.getElementById("s-result");
+  r.style.setProperty("--accent", z.accent);
+  r.style.setProperty("--accent-deep", z.deep);
+  r.style.setProperty("--tint", z.tint);
+  document.getElementById("r-badge").textContent = z.badge;
+  document.getElementById("r-badge").style.background = z.accent;
+  document.getElementById("r-mirror").innerHTML = mirrorHtml();
+  const validate = document.getElementById("r-validate");
+  const helpbox = document.getElementById("r-helpbox");
+  const helplabel = document.getElementById("r-helplabel");
+  const steps = document.getElementById("r-steps");
+  const anchor = document.getElementById("r-anchor");
+  if(variant === "worked"){
+    validate.textContent = z.validate;
+    helpbox.style.display = "";
+    helplabel.textContent = "Dein Werkzeug heute";
+    steps.innerHTML = "<li><strong>„" + state.lastEx + "\"</strong> hat dir gutgetan. Merk dir das – genau so entsteht dein persönlicher Werkzeugkoffer: kleine Übungen, die für dich funktionieren.</li>";
+    anchor.textContent = z.anchor;
+  } else if(variant === "adequate"){
+    validate.textContent = ADEQUATE_TEXT[state.zone] || z.validate;
+    helpbox.style.display = "none";
+    anchor.textContent = ADEQUATE_ANCHOR[state.zone] || z.anchor;
+  } else { /* enough */
+    validate.textContent = "Heute hat keine der Übungen richtig gepasst – und dass du das gespürt und ernst genommen hast, ist selbst Regulation. Nicht jede Methode passt für jeden. Sei sanft mit dir.";
+    helpbox.style.display = "none";
+    anchor.textContent = "„Ich darf ehrlich mit mir sein.“";
   }
-  document.getElementById("r-mirror").innerHTML = '<div class="m-label">Deine Wahrnehmung</div>' + txt;
   go("s-result");
 }
 function restart(){
-  state = {zone:null, body:[], size:null, texture:[], movement:null, color:null, thought:null};
+  state = {zone:null, level:5, body:[], size:null, texture:[], movement:null, color:null, thought:null, exIndex:0, lastEx:null};
   go("s-start");
 }
 </script>
